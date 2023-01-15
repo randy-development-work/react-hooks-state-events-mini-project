@@ -24,12 +24,15 @@ function App() {
 
 })
 
-
+function onTaskFormSubmit(newTask) {
+  const newTaskData = [...tasks, newTask]
+  setTasks(newTaskData);
+}
   return (
     <div className="App">
       <h2>My tasks</h2>
       <CategoryFilter categories={categories} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory}/>
-      <NewTaskForm />
+      <NewTaskForm onTaskFormSubmit={onTaskFormSubmit} categories={categories}/>
       <TaskList tasks={tasksDisplayed} handleDelete={handleDelete}/>
     </div>
   );
